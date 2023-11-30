@@ -2,6 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import ConnectionInfo from "./ConnectionInfo";
 import { useInterval } from "../useInterval";
+import ButtonIcon from "./ButtonIcon";
+import reactimg from '../../assets/react.svg'
 
 const Connections = () => {
   let [date, setDate] = useState(new Date());
@@ -24,6 +26,10 @@ const Connections = () => {
         <ConnectionInfo sensor="WebSocket" />
         <ConnectionInfo sensor="Base de datos" />
         <ConnectionInfo sensor="MQTT" />
+      </div>
+      <div className="flex">
+        <ButtonIcon buttonText="Entrada de agua" ButtonIcon={reactimg}/>
+        <ButtonIcon buttonText="Salida de agua" ButtonIcon={reactimg}/>
       </div>
     </div>
   );
