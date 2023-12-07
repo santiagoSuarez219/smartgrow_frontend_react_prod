@@ -1,9 +1,15 @@
 import { useState } from 'react'
+import NavBar from './components/Navigation/NavBar'
+import Connections from './components/Connections/Connections'
+
 
 export default function App() {
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+    <>
+      <NavBar/>
+      <div>
+        <Connections/>
+      </div>
+    </>
   )
 }
