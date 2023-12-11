@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import { WiThermometer } from "react-icons/wi";
 import { WiRaindrop } from "react-icons/wi";
 import { MdCo2 } from "react-icons/md";
@@ -6,14 +7,17 @@ import { WiHumidity } from "react-icons/wi";
 import { PiPlant } from "react-icons/pi";
 import VariableSensor from "../VariableSensor";
 
-const CardCultivo = ({
-  temperatura,
-  humedad,
-  co2,
-  ppf,
-  ppfd,
-  vpd
-}) => {
+import { SmartgrowContext } from "../../SmartgrowContext";
+
+const CardCultivo = () => {
+  const {
+    temperatura,
+    humedad,
+    co2,
+    ppf,
+    ppfd,
+    vpd,
+  } = useContext(SmartgrowContext);
   return (
     <div className="flex flex-col p-2 shadow">
       <div className="flex justify-between">

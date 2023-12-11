@@ -1,4 +1,5 @@
 import { useRoutes, BrowserRouter } from "react-router-dom";
+import { SmartgrowProvider } from "../../SmartgrowContext";
 import Home from "../Home";
 import NotFound from "../NotFound";
 
@@ -19,7 +20,9 @@ const AppRoutes = () => {
 const App = () => {
   return (
     <BrowserRouter>
-      <AppRoutes />
+      <SmartgrowProvider>
+        <AppRoutes />
+      </SmartgrowProvider>
     </BrowserRouter>
   );
 };
