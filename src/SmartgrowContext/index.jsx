@@ -4,7 +4,7 @@ import { useMqtt } from "./useMqtt";
 const SmartgrowContext = createContext();
 
 function SmartgrowProvider({ children }) {
-  const { message, connectStatus, mqttConnect } = useMqtt("smartgrow");
+  const { message, connectStatus, mqttConnect, mqttPublish } = useMqtt("smartgrow/sensores");
 
   const [temperatura, setTemperatura] = useState(null);
   const [humedad, setHumedad] = useState(null);
@@ -22,17 +22,22 @@ function SmartgrowProvider({ children }) {
   const [statusMqtt, setStatusMqtt] = useState(false);
 
   const handleMqttMessage = (data) => {
-    data = JSON.parse(data.message);
-    setTemperatura(data.temperatura);
-    setHumedad(data.humedad);
-    setCo2(data.co2);
-    setPpf(data.PPF);
-    setPpfd(data.PPFD);
-    setVpd(data.VPD);
-    setPh(data.ph_agua);
-    setEc(data.ec_agua);
-    setNivelAgua(data.nivel_agua);
-    setTemperaturaAgua(data.temperatura_agua);
+    const topic = data.topic;
+    if (topic === "smartgrow/sensores") {
+      data = JSON.parse(data.message);
+      setTemperatura(data.temperatura);
+      setHumedad(data.humedad);
+      setCo2(data.co2);
+      setPpf(data.PPF);
+      setPpfd(data.PPFD);
+      setVpd(data.VPD);
+      setPh(data.ph_agua);
+      setEc(data.ec_agua);
+      setNivelAgua(data.nivel_agua);
+      setTemperaturaAgua(data.temperatura_agua);
+    } else if (topic === "smartgrow/actuadores") {
+      console.log(data.message);
+    }
   };
 
   useEffect(() => {
@@ -67,6 +72,7 @@ function SmartgrowProvider({ children }) {
         statusWaterOutlet,
         statusRecirculation,
         statusMqtt,
+        mqttPublish,
       }}
     >
       {children}

@@ -3,13 +3,6 @@ import { useInterval } from './useInterval';
 
 const HourDate = () => {
   const [date, setDate] = useState(new Date());
-  const [dayWeek, setDayWeek] = useState(date.getDay());
-  const [month, setMount] = useState(date.getMonth());
-  const [day, setDay] = useState(date.getDate());
-  const [year, setYear] = useState(date.getFullYear());
-  const [formatedDate, setFormatedDate] = useState("");
-  const [hour, setHour] = useState(date.getHours());
-  const [minutes, setMinutes] = useState(date.getMinutes());
 
   const dayOfWeek = [
     "Domingo",
@@ -36,28 +29,37 @@ const HourDate = () => {
     "Dic",
   ];
 
-  useEffect(() => {
-    updateFormattedDate();
-  }, [date]);
+  const getFormattedDate = () => {
+    const dayWeek = date.getDay();
+    const month = date.getMonth();
+    const day = date.getDate();
+    const year = date.getFullYear();
+    const hour = date.getHours();
+    const minutes = date.getMinutes();
 
-//   useInterval(() => {
-//     setDate(new Date());
-//   }, 100); // Actualiza cada segundo
-
-  const updateFormattedDate = () => {
     let hourString = hour < 10 ? "0" + hour : hour;
     let minutesString = minutes < 10 ? "0" + minutes : minutes;
     let amPm = hour >= 12 ? "PM" : "AM";
-    setFormatedDate(
-      `${hourString}:${minutesString} ${amPm} ${dayOfWeek[dayWeek]} ${monthString[month]}. ${day}, ${year}`
-    );
+
+    return `${hourString}:${minutesString} ${amPm} ${dayOfWeek[dayWeek]} ${monthString[month]}. ${day}, ${year}`;
   };
+
+  useEffect(() => {
+    setFormattedDate(getFormattedDate());
+  }, [date]);
+
+  useInterval(() => {
+    setDate(new Date());
+  }, 1000); 
+
+  const [formattedDate, setFormattedDate] = useState(getFormattedDate());
 
   return (
     <div className="my-1">
-      <h4 className="w-full text-center font-medium">{formatedDate}</h4>
+      <h4 className="w-full text-center font-medium">{formattedDate}</h4>
     </div>
   );
 };
 
 export default HourDate;
+
