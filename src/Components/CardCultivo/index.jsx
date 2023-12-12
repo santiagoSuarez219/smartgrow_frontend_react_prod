@@ -19,7 +19,7 @@ const CardCultivo = () => {
     vpd,
   } = useContext(SmartgrowContext);
   return (
-    <div className="flex flex-col p-2 shadow">
+    <div className="flex w-full mt-8 flex-col p-2 shadow">
       <div className="flex justify-between">
         <p className="font-bold text-base">Cultivo</p>
         <PiPlant className="text-green-900" />

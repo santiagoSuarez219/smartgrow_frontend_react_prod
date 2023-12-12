@@ -27,7 +27,7 @@ const ControlHidroponico = () => {
   };
 
   return (
-    <div className="m-2 p-2 border-[1px] rounded-md shadow-md">
+    <div className="mt-2 p-2 border-[1px] rounded-md shadow-md">
       <h2 className="font-semibold mb-2 text-base">Control Hidroponico</h2>
       <form
         action="POST"

@@ -12,6 +12,10 @@ function SmartgrowProvider({ children }) {
   const [ppf, setPpf] = useState(null);
   const [ppfd, setPpfd] = useState(null);
   const [vpd, setVpd] = useState(null);
+  const [temperaturaAgua, setTemperaturaAgua] = useState(null)
+  const [ph, setPh] = useState(null) 
+  const [ec, setEc] = useState(null) 
+  const [nivelAgua, setNivelAgua] = useState(null) 
 
   const handleMqttMessage = (data) => {
     console.log(data);
@@ -21,6 +25,10 @@ function SmartgrowProvider({ children }) {
     setPpf(data.PPF);
     setPpfd(data.PPFD);
     setVpd(data.VPD);
+    setPh(data.PH);
+    setEc(data.EC);
+    setNivelAgua(data.nivelAgua);
+    setTemperaturaAgua(data.temperaturaAgua);
   };
 
   useEffect(() => {
@@ -45,6 +53,14 @@ function SmartgrowProvider({ children }) {
         vpd,
         setVpd,
         client,
+        temperaturaAgua,
+        setTemperaturaAgua,
+        ph,
+        setPh,
+        ec,
+        setEc,
+        nivelAgua,
+        setNivelAgua,
       }}
     >
       {children}
