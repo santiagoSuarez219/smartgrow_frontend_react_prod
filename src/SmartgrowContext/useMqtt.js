@@ -4,37 +4,55 @@ import mqtt from "mqtt";
 const useMqtt = (topic) => {
   const [client, setClient] = useState(null);
   const [message, setMessage] = useState(null);
+  const [connectStatus, setConnectStatus] = useState(false)
+
+  const mqttBrokerUrl = "ws://localhost:8083/mqtt";
+
+  const mqttConnect = () => {
+    setConnectStatus('Connecting')
+    setClient(mqtt.connect(mqttBrokerUrl))
+  }
 
   useEffect(() => {
-    const connectToMqttBroker = () => {
-      const mqttBrokerUrl = "ws://localhost:8083/mqtt";
-      const mqttClient = mqtt.connect(mqttBrokerUrl);
+    if (client) {
+      client.on('connect', () => {
+        setConnectStatus(true)
+        client.subscribe(topic)
+        console.log('connection successful')
+      })
 
-      mqttClient.on("connect", () => {
-        console.log("Conectado al broker MQTT");
-        mqttClient.subscribe(topic);
-      });
+      client.on('error', (err) => {
+        console.error('Connection error: ', err)
+        client.end()
+        setConnectStatus(false)
+      })
 
-      mqttClient.on("message", (topic, message) => {
-        const data = JSON.parse(message.toString());
-        setMessage(data);
-      });
+      client.on('reconnect', () => {
+        setConnectStatus(false)
+      })
 
-      setClient(mqttClient);
-    };
-
-    if (!client) {
-      connectToMqttBroker();
+      client.on('message', (topic, message) => {
+        const data = { topic, message: message.toString() }
+        setMessage(data)
+        console.log(`received message: ${message} from topic: ${topic}`)
+      })
     }
+  }, [client])
 
-    return () => {
-      if (client) {
-        client.end();
+  const mqttDisconnect = () => {
+    if (client) {
+      try {
+        client.end(false, () => {
+          setConnectStatus(false)
+          console.log('disconnected successfully')
+        })
+      } catch (error) {
+        console.log('disconnect error:', error)
       }
-    };
-  }, [client]);
+    }
+  }
 
-  return { client, message };
+  return { message, connectStatus, mqttConnect };
 };
 
 export { useMqtt };

@@ -28,21 +28,21 @@ const CardHidroponico = () => {
         valor={ph !== null ? ph : "Cargando..."}
         icon={PiPlant}
         iconColor={"text-green-900"}
-        unidades={"%"}
+        unidades={""}
       />
       <VariableSensor
         parametro={"Conductividad Electrica"}
         valor={ec !== null ? ec : "Cargando..."}
         icon={WiLightning}
         iconColor={"text-yellow-500"}
-        unidades={"ppm"}
+        unidades={"mS/cm"}
       />
       <VariableSensor
         parametro={"Nivel de agua"}
         valor={nivelAgua !== null ? nivelAgua : "Cargando..."}
         icon={WiFlood}
         iconColor={"text-blue-900"}
-        unidades={"umol/m2"}
+        unidades={"cm"}
       />
     </div>
   );

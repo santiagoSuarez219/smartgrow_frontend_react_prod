@@ -4,7 +4,7 @@ import { useMqtt } from "./useMqtt";
 const SmartgrowContext = createContext();
 
 function SmartgrowProvider({ children }) {
-  const { client, message } = useMqtt("smartgrow");
+  const { message, connectStatus, mqttConnect } = useMqtt("smartgrow");
 
   const [temperatura, setTemperatura] = useState(null);
   const [humedad, setHumedad] = useState(null);
@@ -16,51 +16,57 @@ function SmartgrowProvider({ children }) {
   const [ph, setPh] = useState(null) 
   const [ec, setEc] = useState(null) 
   const [nivelAgua, setNivelAgua] = useState(null) 
+  const [statusWaterInlet, setStatusWaterInlet] = useState(false);
+  const [statusWaterOutlet, setStatusWaterOutlet] = useState(false);
+  const [statusRecirculation, setStatusRecirculation] = useState(false);
+  const [statusMqtt, setStatusMqtt] = useState(false);
 
   const handleMqttMessage = (data) => {
-    console.log(data);
+    data = JSON.parse(data.message);
     setTemperatura(data.temperatura);
     setHumedad(data.humedad);
     setCo2(data.co2);
     setPpf(data.PPF);
     setPpfd(data.PPFD);
     setVpd(data.VPD);
-    setPh(data.PH);
-    setEc(data.EC);
-    setNivelAgua(data.nivelAgua);
-    setTemperaturaAgua(data.temperaturaAgua);
+    setPh(data.ph_agua);
+    setEc(data.ec_agua);
+    setNivelAgua(data.nivel_agua);
+    setTemperaturaAgua(data.temperatura_agua);
   };
+
+  useEffect(() => {
+    mqttConnect();
+  },[])
 
   useEffect(() => {
     if (message !== null) {
       handleMqttMessage(message);
     }
-  },[message])
+    if (connectStatus) {
+      setStatusMqtt(true);
+    } else {
+      setStatusMqtt(false);
+    }
+  },[message, connectStatus])
 
   return (
     <SmartgrowContext.Provider
       value={{
         temperatura,
-        setTemperatura,
         humedad,
-        setHumedad,
         co2,
-        setCo2,
         ppf,
-        setPpf,
         ppfd,
-        setPpfd,
         vpd,
-        setVpd,
-        client,
         temperaturaAgua,
-        setTemperaturaAgua,
         ph,
-        setPh,
         ec,
-        setEc,
         nivelAgua,
-        setNivelAgua,
+        statusWaterInlet,
+        statusWaterOutlet,
+        statusRecirculation,
+        statusMqtt,
       }}
     >
       {children}
