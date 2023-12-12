@@ -7,7 +7,11 @@ export default {
   theme: {
     extend: {
       colors:{
-        primary:'#ACD9C2',
+        primary:'#386641',
+        secondary: '#6A994E',
+        tertiary: '#A7C957',
+        quartiary: '#F2E8Cf',
+        quintenary: '#BC4749',
         input: '#F7F7F7'
       },
       fontFamily:{

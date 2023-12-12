@@ -1,27 +1,27 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import ConnectionInfo from "./ConnectionInfo";
-import { useInterval } from "../useInterval";
-import ButtonIcon from "./ButtonIcon";
+// import { useInterval } from "../HourDate/useInterval";
+// import ButtonIcon from "../ButtonIcon/ButtonIcon";
 import ControlHidroponico from "./ControlHidroponico";
-import reactimg from '../../assets/react.svg'
 
 const Connections = () => {
-  let [date, setDate] = useState(new Date());
-  let [formatedDate, setFormatedDate] = useState("");
+  const [conectionEntradaAgua, setConectionEntr] = useState(false)
+  // let [date, setDate] = useState(new Date());
+  // let [formatedDate, setFormatedDate] = useState("");
 
-  const time = () => {
-    setDate(new Date());
-    setFormatedDate(formatTime(date));
-  };
+  // const time = () => {
+  //   setDate(new Date());
+  //   setFormatedDate(formatTime(date));
+  // };
 
-  useInterval(time, 100);
+  // useInterval(time, 100);
 
   return (
     <div className="my-2">
-      <div className="my-1">
+      {/* <div className="my-1">
         <h4 className="w-full text-center font-medium">{formatedDate}</h4>
-      </div>
+      </div> */}
       <div className="flex items-center justify-center">
         <ConnectionInfo sensor="Recirculacion" />
         <ConnectionInfo sensor="WebSocket" />
@@ -29,8 +29,8 @@ const Connections = () => {
         <ConnectionInfo sensor="MQTT" />
       </div>
       <div className="flex">
-        <ButtonIcon buttonText="Entrada de agua" ButtonIcon={reactimg}/>
-        <ButtonIcon buttonText="Salida de agua" ButtonIcon={reactimg}/>
+        {/* <ButtonIcon buttonText="Entrada de agua" />
+        <ButtonIcon buttonText="Salida de agua" /> */}
       </div>
       <ControlHidroponico/>
     </div>

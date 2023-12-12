@@ -1,6 +1,6 @@
 const LayoutCards = ({ children }) => {
     return (
-        <div className='flex flex-col m-4'>
+        <div className='w-full flex flex-col m-4'>
             { children }
         </div>
     )

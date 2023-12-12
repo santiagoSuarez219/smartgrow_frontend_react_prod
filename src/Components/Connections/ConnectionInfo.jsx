@@ -8,8 +8,6 @@ const ConnectionInfo = (props)=> {
 
     //TODO Add handleState with websockets
 
-
-
     let handleSensorClass =()=>{
         setSensorClass(state? 'mx-1 w-2 rounded-full bg-green-700' : 'mx-1 w-2 rounded-full bg-red-700')
     }
