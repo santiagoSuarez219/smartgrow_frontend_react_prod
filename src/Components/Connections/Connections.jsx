@@ -28,6 +28,7 @@ const Connections = () => {
         <ConnectionInfo sensor="Base de datos" />
         <ConnectionInfo sensor="MQTT" />
       </div>
+      <div className="hidden my-2 bg-gray-200 w-[98%] h-0.5 mx-2 rounded-full md:block"></div>
       <div className="flex">
         {/* <ButtonIcon buttonText="Entrada de agua" />
         <ButtonIcon buttonText="Salida de agua" /> */}
@@ -66,14 +67,14 @@ const formatTime = (date) => {
   let minutes = date.getMinutes();
 
   let day = date.getDay();
+  let numberDay = date.getDate()
   let month = date.getMonth();
   let year = date.getFullYear();
 
   let hourString = hour < 10 ? "0" + hour : hour;
   let minutesString = minutes < 10 ? "0" + minutes : minutes;
-
   let amPm = hour >= 12 ? "PM" : "AM";
-  return `${hourString}:${minutesString} ${amPm} ${dayOfWeek[day]} ${monthString[month]}. ${day}, ${year}`;
+  return `${hourString}:${minutesString} ${amPm} ${dayOfWeek[day]} ${monthString[month]}. ${numberDay}, ${year}`;
 };
 
 export default Connections;

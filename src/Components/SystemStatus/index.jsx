@@ -4,6 +4,11 @@ import { AiFillCloseCircle } from "react-icons/ai";
 import { SmartgrowContext } from "../../SmartgrowContext";
 
 const SystemStatus = () => {
+
+  const classStatusGreen = "h-3 w-3 text-secondary md:h-5 md:w-5"
+  const classStatusRed = "h-3 w-3 text-red-500 md:h-5 md:w-5"
+  const classText = "ml-1 text-sm md:text-lg"
+  
   const {
     statusRecirculation,
     statusWaterInlet,
@@ -12,38 +17,38 @@ const SystemStatus = () => {
   } = useContext(SmartgrowContext);
 
   return (
-    <div className="w-full flex justify-between">
+    <div className="w-full flex justify-between md:my-3">
       <div className="flex items-center">
         {statusWaterInlet && (
-          <AiFillCheckCircle className="h-3 w-3 text-secondary" />
+          <AiFillCheckCircle className={classStatusGreen} />
         )}
         {!statusWaterInlet && (
-          <AiFillCloseCircle className="h-3 w-3 text-red-500" />
+          <AiFillCloseCircle className={classStatusRed} />
         )}
-        <p className="ml-1 text-sm">Entrada de agua</p>
+        <p className={classText}>Entrada de agua</p>
       </div>
       <div className="flex items-center">
         {statusWaterOutlet && (
-          <AiFillCheckCircle className="h-3 w-3 text-secondary" />
+          <AiFillCheckCircle className={classStatusGreen} />
         )}
         {!statusWaterOutlet && (
-          <AiFillCloseCircle className="h-3 w-3 text-red-500" />
+          <AiFillCloseCircle className={classStatusRed}/>
         )}
-        <p className="ml-1 text-sm">Salida de agua</p>
+        <p className={classText}>Salida de agua</p>
       </div>
       <div className="flex items-center">
         {statusRecirculation && (
-          <AiFillCheckCircle className="h-3 w-3 text-secondary" />
+          <AiFillCheckCircle className={classStatusGreen} />
         )}
         {!statusRecirculation && (
-          <AiFillCloseCircle className="h-3 w-3 text-red-500" />
+          <AiFillCloseCircle className={classStatusRed}/>
         )}
-        <p className="ml-1 text-sm">Recirculacion</p>
+        <p className={classText}>Recirculacion</p>
       </div>
       <div className="flex items-center">
-        {statusMqtt && <AiFillCheckCircle className="h-3 w-3 text-secondary" />}
-        {!statusMqtt && <AiFillCloseCircle className="h-3 w-3 text-red-500" />}
-        <p className="ml-1 text-sm">MQTT</p>
+        {statusMqtt && <AiFillCheckCircle className={classStatusGreen}/>}
+        {!statusMqtt && <AiFillCloseCircle className={classStatusRed} />}
+        <p className={classText}>MQTT</p>
       </div>
     </div>
   );

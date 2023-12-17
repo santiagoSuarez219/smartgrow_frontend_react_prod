@@ -14,7 +14,8 @@ const ActuatorButtons = () => {
   };
 
   return (
-    <div className="w-full flex mt-8 justify-between">
+    
+    <div className="w-full flex mt-8 justify-between md:flex-col md:mt-6 md:mr-8 md:h-[]">
       <ButtonIcon
         text={"Entrada de agua"}
         icon={WiDirectionUpRight}
