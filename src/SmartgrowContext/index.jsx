@@ -22,6 +22,8 @@ function SmartgrowProvider({ children }) {
   const [statusMqtt, setStatusMqtt] = useState(false);
   const [setPointPh, setSetPointPh ] = useState(0);
   const [setPointEc, setSetPointEc ] = useState(0);
+  const [openModal, setOpenModal] = useState(false);
+  const [valueModal, setValueModal] = useState("");
 
   const handleMqttMessage = (data) => {
     const topic = data.topic;
@@ -79,6 +81,10 @@ function SmartgrowProvider({ children }) {
         setPointEc,
         setSetPointEc,
         mqttPublish,
+        openModal,
+        setOpenModal,
+        valueModal,
+        setValueModal
       }}
     >
       {children}

@@ -1,8 +1,12 @@
+import React, { useContext } from "react";
 import ButtonIcon from "../ButtonIcon/ButtonIcon";
 import { PiPlant } from "react-icons/pi";
 import { WiLightning } from "react-icons/wi";
+import { SmartgrowContext } from "../../SmartgrowContext";
 
 const HidroponicoControl = () => {
+  const { openModal, setOpenModal, setValueModal } = useContext(SmartgrowContext);
+
   return (
     <div className="mt-4 w-full h-1/2 flex flex-col rounded-md">
       <h2 className="font-semibold mb-2 text-lg">Control Hidroponico</h2>
@@ -10,14 +14,20 @@ const HidroponicoControl = () => {
         <ButtonIcon
           text={"PH"}
           icon={PiPlant}
-          onClick={() => {console.log('hola')}}
+          onClick={() => {
+            setOpenModal((state) => !state);
+            setValueModal("ph");
+          }}
         />
         <ButtonIcon
           text={"Electroconductividad"}
           icon={WiLightning}
-          onClick={() => {console.log('hola')}}
+          onClick={() => {
+            setOpenModal((state) => !state);
+            setValueModal("ec");
+          }}
         />
-      </div>  
+      </div>
     </div>
   );
 };
