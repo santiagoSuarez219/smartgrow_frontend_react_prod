@@ -20,6 +20,8 @@ function SmartgrowProvider({ children }) {
   const [statusWaterOutlet, setStatusWaterOutlet] = useState(false);
   const [statusRecirculation, setStatusRecirculation] = useState(false);
   const [statusMqtt, setStatusMqtt] = useState(false);
+  const [setPointPh, setSetPointPh ] = useState(0);
+  const [setPointEc, setSetPointEc ] = useState(0);
 
   const handleMqttMessage = (data) => {
     const topic = data.topic;
@@ -72,6 +74,10 @@ function SmartgrowProvider({ children }) {
         statusWaterOutlet,
         statusRecirculation,
         statusMqtt,
+        setPointPh,
+        setSetPointPh,
+        setPointEc,
+        setSetPointEc,
         mqttPublish,
       }}
     >
