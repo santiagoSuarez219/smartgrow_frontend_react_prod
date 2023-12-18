@@ -19,10 +19,10 @@ const CardCultivo = () => {
     vpd,
   } = useContext(SmartgrowContext);
   return (
-    <div className="flex w-full mt-8 flex-col p-2 shadow">
-      <div className="flex justify-between">
-        <p className="font-bold text-base">Cultivo</p>
-        <PiPlant className="text-green-900" />
+    <div className="w-full h-1/2 flex flex-col p-2 shadow">
+      <div className="h-1/7 px-2 flex justify-between items-center">
+        <p className="font-bold text-lg">Cultivo</p>
+        <PiPlant className="w-8 h-8 text-green-900" />
       </div>
       <VariableSensor
         parametro={"Temperatura"}

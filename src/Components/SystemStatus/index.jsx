@@ -12,7 +12,7 @@ const SystemStatus = () => {
   } = useContext(SmartgrowContext);
 
   return (
-    <div className="w-full flex justify-between">
+    <div className="w-full h-1/12 flex justify-between">
       <div className="flex items-center">
         {statusWaterInlet && (
           <AiFillCheckCircle className="h-3 w-3 text-secondary" />
@@ -20,7 +20,7 @@ const SystemStatus = () => {
         {!statusWaterInlet && (
           <AiFillCloseCircle className="h-3 w-3 text-red-500" />
         )}
-        <p className="ml-1 text-sm">Entrada de agua</p>
+        <p className="ml-1 text-xs">Entrada de agua</p>
       </div>
       <div className="flex items-center">
         {statusWaterOutlet && (
@@ -29,7 +29,7 @@ const SystemStatus = () => {
         {!statusWaterOutlet && (
           <AiFillCloseCircle className="h-3 w-3 text-red-500" />
         )}
-        <p className="ml-1 text-sm">Salida de agua</p>
+        <p className="ml-1 text-xs">Salida de agua</p>
       </div>
       <div className="flex items-center">
         {statusRecirculation && (
@@ -38,12 +38,12 @@ const SystemStatus = () => {
         {!statusRecirculation && (
           <AiFillCloseCircle className="h-3 w-3 text-red-500" />
         )}
-        <p className="ml-1 text-sm">Recirculacion</p>
+        <p className="ml-1 text-xs">Recirculacion</p>
       </div>
       <div className="flex items-center">
         {statusMqtt && <AiFillCheckCircle className="h-3 w-3 text-secondary" />}
         {!statusMqtt && <AiFillCloseCircle className="h-3 w-3 text-red-500" />}
-        <p className="ml-1 text-sm">MQTT</p>
+        <p className="ml-1 text-xs">MQTT</p>
       </div>
     </div>
   );

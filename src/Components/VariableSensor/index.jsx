@@ -1,6 +1,6 @@
 const VariableSensor = ({ parametro, icon: Icon, iconColor, unidades, valor }) => {
   return (
-    <div className="flex justify-between p-1 mt-2">
+    <div className="h-1/7 flex justify-between items-center p-1">
       <div className="flex items-center">
         <Icon className={`w-8 h-8 ${iconColor}`} />
         <p className="ml-2">{parametro}</p>
