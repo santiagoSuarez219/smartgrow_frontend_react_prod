@@ -5,7 +5,7 @@ import { WiLightning } from "react-icons/wi";
 import { SmartgrowContext } from "../../SmartgrowContext";
 
 const HidroponicoControl = () => {
-  const { openModal, setOpenModal, setValueModal } = useContext(SmartgrowContext);
+  const { setOpenModal, setValueModal } = useContext(SmartgrowContext);
 
   return (
     <div className="mt-4 w-full flex flex-col rounded-md">
