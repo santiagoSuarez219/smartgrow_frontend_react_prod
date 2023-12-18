@@ -55,7 +55,7 @@ const HourDate = () => {
   const [formattedDate, setFormattedDate] = useState(getFormattedDate());
 
   return (
-    <div className="my-1 h-1/12">
+    <div className="my-1 h-4">
       <h4 className="w-full text-sm text-center font-medium">{formattedDate}</h4>
     </div>
   );

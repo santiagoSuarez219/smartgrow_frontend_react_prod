@@ -7,9 +7,8 @@ import SystemStatus from "../../Components/SystemStatus";
 import ActuatorButtons from "../../Components/ActuatorButtons";
 import HidroponicoControl from "../../Components/HidroponicoControl";
 import CardHidroponico from "../../Components/CardHidroponico";
-import LayourHeader from "../../Components/LayaoutHeader";
-import LayoutContent from "../../Components/LayoutContent";
 import SetPointForm from "../../Components/SetPointForm";
+import TabBar from "../../Components/TabBar";
 import { SmartgrowContext } from "../../SmartgrowContext";
 import { Modal } from "../../Modal";
 
@@ -18,17 +17,16 @@ function Home() {
   return (
     <>
       <Layout>
-        <LayourHeader>
-          <Navbar />
-          <HourDate />
-          <SystemStatus />
-          <ActuatorButtons />
-          <HidroponicoControl />
-        </LayourHeader>
-        <LayoutContent>
+        <Navbar />
+        <HourDate />
+        <SystemStatus />
+        <ActuatorButtons />
+        <HidroponicoControl />
+        <div className="overflow-y-auto overscroll-y-contain">
           <CardCultivo />
           <CardHidroponico />
-        </LayoutContent>
+        </div>
+        <TabBar />
       </Layout>
       {openModal && (
         <Modal>

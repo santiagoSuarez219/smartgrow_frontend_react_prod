@@ -11,7 +11,7 @@ import { SmartgrowContext } from "../../SmartgrowContext";
 const CardHidroponico = () => {
   const { temperaturaAgua, ph, ec, nivelAgua } = useContext(SmartgrowContext);
   return (
-    <div className="relative flex w-full h-1/2 flex-col p-2 shadow">
+    <div className="flex w-full flex-col p-2 shadow">
       <div className="h-1/7 px-2 flex justify-between items-center">
         <p className="font-bold text-lg">Hidroponico</p>
         <WiRaindrop className="text-blue-900 w-8 h-8" />
@@ -44,7 +44,6 @@ const CardHidroponico = () => {
         iconColor={"text-blue-900"}
         unidades={"cm"}
       />
-      <p className="absolute bottom-2 w-full flex justify-center items-center">Instituto Tecnologico Metropolitano</p>
     </div>
   );
 };

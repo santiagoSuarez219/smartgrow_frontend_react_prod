@@ -14,7 +14,7 @@ const ActuatorButtons = () => {
   };
 
   return (
-    <div className="w-full h-1/6 flex space-x-4 mt-4 justify-between">
+    <div className="w-full h-11 flex space-x-4 mt-4 justify-between">
       <ButtonIcon
         text={"Entrada de agua"}
         icon={WiDirectionUpRight}

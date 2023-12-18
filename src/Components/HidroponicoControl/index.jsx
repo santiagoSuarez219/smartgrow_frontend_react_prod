@@ -8,9 +8,9 @@ const HidroponicoControl = () => {
   const { openModal, setOpenModal, setValueModal } = useContext(SmartgrowContext);
 
   return (
-    <div className="mt-4 w-full h-1/2 flex flex-col rounded-md">
+    <div className="mt-4 w-full flex flex-col rounded-md">
       <h2 className="font-semibold mb-2 text-lg">Control Hidroponico</h2>
-      <div className="w-full h-1/2 flex space-x-4 justify-between">
+      <div className="w-full h-11 flex space-x-4 justify-between">
         <ButtonIcon
           text={"PH"}
           icon={PiPlant}
